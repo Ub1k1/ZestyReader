@@ -1,2 +1,2 @@
 # ZestyReader
-Description of program, how to install, etc.
+Import pyttsx3 test to speech engine, run: pip install pyttsx3
