@@ -13,7 +13,7 @@ from tkinter import colorchooser
 import tkinter.scrolledtext as scrolledtext
 import pyttsx3
 
-# Initialize the Text-To-Speech engine pyttsx3
+# Initialize Text-To-Speech engine pyttsx3
 engine = pyttsx3.init()
 # Produce a available voice list
 voices = {}
@@ -24,22 +24,21 @@ for system_voice in system_voices:
 # Create the application window.
 root = Tk()
 root.title("Zesty - A Visual and Audio Tool")
-# The window has width of 800 pixel and height of 700 pixel
-# Initial position from top left corner is 200 pixel right and 50 pixel down
+# The window has width of 800 pixels and height of 700 pixels
+# The initial position from top left corner is 200 pixels right and 50 pixels down
 root.geometry("800x700+200+50")
 # Make the application window resizable
 root.resizable(True, True)
 root.minsize(800, 700)
 
-# tag sequence to mark the text properties
+# Tag sequence to mark the text properties
 tag_sequence = 0
-
 
 # Open the existing text file
 def open_file():
     # Open the dialog and ask the user to select a file
     existing_file = filedialog.askopenfile(filetypes=[('Text File', '.txt'), ('Python File', '.py')])
-    # Need clear the existing text in the window first
+    # Need to clear the existing text in the window first
     text.delete(1.0, END)
     # Then we can insert the new text
     text.insert(INSERT, existing_file.read())
@@ -61,8 +60,7 @@ def copy_text():
     root.clipboard_clear()
     # Append the selected text to the clipboard
     text.clipboard_append(text.selection_get())
-
-
+    
 # Cut the selected text
 def cut_text():
     # Need clear the clipboard first
@@ -98,7 +96,7 @@ def find_text():
     search_popup.title('Word Search')
     search_popup.transient(root)
     search_popup.resizable(False, False)
-    # Initial position from top left corner is 800 pixel right and 75 pixel down
+    # Initial position from top left corner is 800 pixels right and 75 pixels down
     search_popup.geometry("+800+75")
     # The popup window contains a Label and Entry to allow user enter the word
     Label(search_popup, text="Enter a word: ").grid(row=0, column=0)
@@ -140,30 +138,30 @@ def help_popup():
     help_panel.title('Hep')
     help_panel.transient(root)
     help_panel.resizable(False, False)
-    # Initial position from top left corner is 250 pixel right and 200 pixel down
+    # Initial position from top left corner is 250 pixels right and 200 pixels down
     help_panel.geometry("550x450+250+200")
-    # Create each help items for the first toolbar
-    create_help_item(help_panel, 0, "Open:", "Open an existing text file and start playing with it")
-    create_help_item(help_panel, 1, "Save:", "Save the text to a file for future usage")
-    create_help_item(help_panel, 2, "Copy:", "Save the highlighted text to the clipboard")
-    create_help_item(help_panel, 3, "Cut:", "Cut the highlighted text")
-    create_help_item(help_panel, 4, "Paste:", "Paste the text from the clipboard to the current position")
-    create_help_item(help_panel, 5, "Undo:", "Undo the text change")
-    create_help_item(help_panel, 6, "Redo:", "Redo the text change")
-    create_help_item(help_panel, 7, "Find:", "Enter a word, and search / highlight it in the text")
-    # Create each help items for the second toolbar
+    # Create each help item for the first toolbar
+    create_help_item(help_panel, 0, "Open:", "")
+    create_help_item(help_panel, 1, "Save:", "")
+    create_help_item(help_panel, 2, "Copy:", "")
+    create_help_item(help_panel, 3, "Cut:", "")
+    create_help_item(help_panel, 4, "Paste:", "")
+    create_help_item(help_panel, 5, "Undo:", "")
+    create_help_item(help_panel, 6, "Redo:", "")
+    create_help_item(help_panel, 7, "Find:", "")
+    # Create each help item for the second toolbar
     create_help_item(help_panel, 8, "------", "")
-    create_help_item(help_panel, 9, "Font:", "Change the font type and size for the highlighted text")
-    create_help_item(help_panel, 10, "Bold:", "Make the highlighted text bold")
-    create_help_item(help_panel, 11, "Italic:", "Make highlighted text italic")
-    create_help_item(help_panel, 12, "Underline:", "Add the underline to the highlighted text")
-    create_help_item(help_panel, 13, "Color:", "Change the color of the highlighted text")
+    create_help_item(help_panel, 9, "Font:", "")
+    create_help_item(help_panel, 10, "Bold:", "")
+    create_help_item(help_panel, 11, "Italic:", "")
+    create_help_item(help_panel, 12, "Underline:", "")
+    create_help_item(help_panel, 13, "Color:", "")
     # Create each help items for the third toolbar
     create_help_item(help_panel, 14, "------", "")
-    create_help_item(help_panel, 15, "Play:", "Select the voice type, change the speed, and play the highlighted text")
+    create_help_item(help_panel, 15, "Play:", "")
 
 
-# Create each help item by pass in the parent widget and row number, with the function name and description of the function
+# Create each help item by passing in the parent widget and row number, with the function name and description of the function
 def create_help_item(parent_widget, row_number, function_name, function_description):
     Label(parent_widget, text=function_name, font="Arial 10 bold").grid(row=row_number, column=0, padx=2, pady=2, sticky="W")
     Label(parent_widget, text=function_description, font="Arial 10").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
@@ -178,15 +176,15 @@ def bold_text():
         # Get a list of existing tag for the selected text
         tags = text.tag_names(SEL_FIRST)
         tag_found = 0
-        # Check ig the selected text has a bold tag
+        # Check if the selected text has a bold tag
         for tag_name in tags:
             if tag_name.startswith("bold_text_"):
                 tag_found = 1
         if tag_found == 1:
-            # If the selected text already has a bold tag, then make the text un-bold
+            # If the selected text already has a bold tag, then make the text un-bolded
             text.tag_remove(tag_name, SEL_FIRST, SEL_LAST)
         else:
-            # If the selected text does not have a bold tag, then make the text bold
+            # If the selected text does not have a bold tag, then make the text bolded
             font_style = font.Font(text, text.cget("font"))
             font_style.configure(weight="bold")
             text.tag_add("bold_text_" + str(tag_sequence), SEL_FIRST, SEL_LAST)
@@ -194,7 +192,7 @@ def bold_text():
             tag_sequence += 1
 
 
-# Make the highlighted text italic
+# Make the highlighted text italized
 def italic_text():
     # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
     global tag_sequence
@@ -209,10 +207,10 @@ def italic_text():
                 tag_found = 1
                 current_tag_name = tag_name
         if tag_found == 1:
-            # If the selected text already has a italic tag, then make the text un-italic
+            # If the selected text already has a italic tag, then make the text un-italized
             text.tag_remove(tag_name, SEL_FIRST, SEL_LAST)
         else:
-            # If the selected text does not have a italic tag, then make the text italic
+            # If the selected text does not have a italic tag, then make the text italized
             font_style = font.Font(text, text.cget("font"))
             font_style.configure(slant="italic")
             text.tag_add("italic_text_" + str(tag_sequence), SEL_FIRST, SEL_LAST)
@@ -295,7 +293,7 @@ def change_text_size(event):
             tag_sequence += 1
 
 
-# Change the color of the selected text
+# Change the colour of the selected text
 def change_text_color():
     # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
     global tag_sequence
@@ -307,15 +305,15 @@ def change_text_color():
         # Get a list of existing tag for the selected text
         tags = text.tag_names(SEL_FIRST)
         tag_found = 0
-        # Check ig the selected text has a font size tag
+        # Check if the selected text has a font size tag
         for tag_name in tags:
             if tag_name.startswith("font_color_text_"):
                 tag_found = 1
         if tag_found == 1:
-            # If the selected text already has a font color tag, then remove the font color
+            # If the selected text already has a font color tag, then remove the font colour
             text.tag_remove(tag_name, SEL_FIRST, SEL_LAST)
         else:
-            # If the selected text does not have a font color tag, then add the font color
+            # If the selected text does not have a font color tag, then add the font colour
             text.tag_add("font_color_text_" + str(tag_sequence), SEL_FIRST, SEL_LAST)
             text.tag_configure("font_color_text_" + str(tag_sequence), foreground=color_name)
             tag_sequence += 1
@@ -377,7 +375,7 @@ help_button.pack(in_=toolbar_one, side=RIGHT, padx=2, pady=2)
 # Create the tool bar two
 toolbar_two = Frame(root, pady=2)
 toolbar_two.pack(side=TOP, fill="x")
-# Arrange the tool bar one
+# Arrange tool bar one
 # Font Type
 font_type = StringVar()
 font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 10")
@@ -409,7 +407,7 @@ color_picker_image = PhotoImage(file="icons/ColorPicker.png")
 color_picker_button = Button(text="Color", image=color_picker_image, compound=LEFT, width=60, height=24, command=change_text_color)
 color_picker_button.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
 
-# Create the tool bar two
+# Create tool bar two
 toolbar_three = Frame(root, pady=2)
 toolbar_three.pack(side=TOP, fill="x")
 # Arrange the tool bar one
@@ -436,10 +434,3 @@ text = scrolledtext.ScrolledText(wrap="word", font=("Arial", 10), background="WH
 text.pack(in_=text_area, side=LEFT, fill=BOTH, expand=True)
 
 root.mainloop()
-
-
-# TODO: research how stop the pyttsx in the middle, otherwise, you have to wait all text be read, then you can do other action
-# def stop_pyttsx(name, location, length):
-#     if keyboard.is_pressed("esc"):
-#         engine.stop()
-# engine.connect('started-word', stop_pyttsx)
