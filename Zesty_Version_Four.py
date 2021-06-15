@@ -6,7 +6,7 @@
 # https://pypi.org/project/pyttsx3/
 
 # I think lines 11 to 14 are probably unnecessary here. import * already imports everything in the tkinter package.
-#Maybe try removing those lines and see if it still works?
+# Maybe try removing those lines and see if it still works?
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
