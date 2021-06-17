@@ -7,8 +7,3 @@ To run the source code, first install Python 3.9.4 and import pyttsx3. In the so
 After, go to the folder where the source code is, drag and drop the icons folder to it, and run Zesty.exe
 
 **IMPORTANT:** Make sure **Zesty.exe** is in the same folder as the **icons** folder before running it
-
-Extra:
-Maybe we should change the font size to larger than size 10? It could be kinda difficult to look at small font --> fixed!
-
-Also maybe download a dyslexic font as well? --> will do today!
