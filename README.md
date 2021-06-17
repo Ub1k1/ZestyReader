@@ -10,4 +10,5 @@ After, go to the folder where the source code is, drag and drop the icons folder
 
 Extra:
 Maybe we should change the font size to larger than size 10? It could be kinda difficult to look at small font
+
 Also maybe download a dyslexic font as well?
