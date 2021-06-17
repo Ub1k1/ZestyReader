@@ -3,11 +3,11 @@ from tkinter import font, colorchooser
 import pyttsx3
 
 class ButtonFunction:
-    #constructor
+    #Constructor
     def __init__(self):
         self.voices = {}
 
-    # Play the text user highlighted, otherwise, play all the text
+    # Play the text the user highlighted. If none was highlighted, play all the text
     def play_text(self, text, voice_speed, voice_type_combo):
         # Initialize pyttsx3
         engine = pyttsx3.init()
@@ -35,10 +35,9 @@ class ButtonFunction:
         # Append the selected text to the clipboard
         text.clipboard_append(text.selection_get())
 
-
     # Cut the selected text
     def cut_text(self, text, root):
-        # Need clear the clipboard first
+        # Need to clear the clipboard first
         root.clipboard_clear()
         # Append the selected text to the clipboard
         text.clipboard_append(text.selection_get())
@@ -50,23 +49,20 @@ class ButtonFunction:
     def paste_text(self, text, root):
         # Paste the selected text at the cursor
         text.insert(INSERT, root.clipboard_get())
-        # Need to clear keyboard a
-        # root.clipboard_clear()
+        root.clipboard_clear()
 
-
-    # To undo the change
+    # To undo the changes
     def undo_text(self, text):
         text.edit_undo()
 
-
-    # To redo the change
+    # To redo the changes
     def redo_text(self, text):
         text.edit_redo()
 
 
     # Search the text and highlight words
     def find_text(self, text, root):
-        # Create a popup window for search function, and the popup is transient (temporary) to the main window
+        # Create a popup window for search functions
         search_popup = Toplevel(root)
         search_popup.title('Word Search')
         search_popup.transient(root)
@@ -78,8 +74,7 @@ class ButtonFunction:
         search_input = Entry(search_popup, width=20)
         search_input.grid(row=0, column=1, padx=2)
         search_input.focus_set()
-        # Action button to search or cancel.
-        # If you need pass a parameter to the function, must use 'lambda:' keyword
+        # Action button to search or cancel
         Button(search_popup, text="Search", command=lambda: self.find_text_search(search_input.get())).grid(row=1, column=0, padx=2, pady=2, sticky="E")
         Button(search_popup, text="Close", command=lambda: self.find_text_close(search_popup)).grid(row=1, column=1, padx=2, pady=2, sticky="W")
 
@@ -108,32 +103,32 @@ class ButtonFunction:
 
     # Popup window for how to use the application
     def help_popup(self, root):
-        # Create a popup window for help function, and the popup is transient (temporary) to the main window
+        # Create a popup window for the help function
         help_panel = Toplevel(root)
         help_panel.title('Hep')
         help_panel.transient(root)
         help_panel.resizable(False, False)
-        # Initial position from top left corner is 250 pixel right and 200 pixel down
+        # Initial position from top left corner is 250 pixels right and 200 pixels down
         help_panel.geometry("550x450+250+200")
-        # Create each help items for the first toolbar
-        self.create_help_item(help_panel, 0, "Open:", "Explanation")
-        self.create_help_item(help_panel, 1, "Save:", "Explanation")
-        self.create_help_item(help_panel, 2, "Copy:", "Explanation")
-        self.create_help_item(help_panel, 3, "Cut:", "Explanation")
-        self.create_help_item(help_panel, 4, "Paste:", "Explanation")
-        self.create_help_item(help_panel, 5, "Undo:", "Explanation")
-        self.create_help_item(help_panel, 6, "Redo:", "Explanation")
-        self.create_help_item(help_panel, 7, "Find:", "Explanation")
-        # Create each help items for the second toolbar
+        # Help explanation for the first toolbar
+        self.create_help_item(help_panel, 0, "Open:", "Open an existing text file and configure it to your liking!")
+        self.create_help_item(help_panel, 1, "Save:", "Save the text to a new file")
+        self.create_help_item(help_panel, 2, "Copy:", "Save the highlighted text to the clipboard")
+        self.create_help_item(help_panel, 3, "Cut:", "Cut the highlighted text")
+        self.create_help_item(help_panel, 4, "Paste:", "Paste the text you previously copied/cut to the current position")
+        self.create_help_item(help_panel, 5, "Undo:", "Undo a text change")
+        self.create_help_item(help_panel, 6, "Redo:", "Redo a text change")
+        self.create_help_item(help_panel, 7, "Find:", "Find the word you entered within the text")
+        # Help explanation for the second toolbar
         self.create_help_item(help_panel, 8, "------", "")
-        self.create_help_item(help_panel, 9, "Font:", "Explanation")
-        self.create_help_item(help_panel, 10, "Bold:", "Explanation")
-        self.create_help_item(help_panel, 11, "Italic:", "Explanation")
-        self.create_help_item(help_panel, 12, "Underline:", "Explanation")
-        self.create_help_item(help_panel, 13, "Color:", "Explanation")
-        # Create each help items for the third toolbar
+        self.create_help_item(help_panel, 9, "Font:", "Change the font type and size for the highlighted text")
+        self.create_help_item(help_panel, 10, "Bold:", "Make the highlighted text bold")
+        self.create_help_item(help_panel, 11, "Italic:", "Italicize the highlighted text")
+        self.create_help_item(help_panel, 12, "Underline:", "Underline the highlighted text")
+        self.create_help_item(help_panel, 13, "Color:", "Change the color of the highlighted text")
+        # Help explanation for the third toolbar
         self.create_help_item(help_panel, 14, "------", "")
-        self.create_help_item(help_panel, 15, "Explanation")
+        self.create_help_item(help_panel, 15, "Select your preferred voice type, change the playback speed, and play it outloud using the play button")
 
 
     # Create each help item by passing in the parent widget and row number, with the function name and description of the function
@@ -142,9 +137,9 @@ class ButtonFunction:
         Label(parent_widget, text=function_description, font="Arial 10").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
 
 
-    # Make the highlighted text bold
+    # Bold the highlighted text
     def bold_text(self, text):
-        # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
+        # tag_sequence must be global, so any change to tag_sequence will be visible from other methods
         global tag_sequence
         # Check if there's any selected text. If no text is selected, no need for further action
         if text.tag_ranges("sel"):
@@ -169,7 +164,6 @@ class ButtonFunction:
 
     # Make the highlighted text italized
     def italic_text(self, text):
-        # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
         global tag_sequence
         # Check if there's any selected text. If no text is selected, no need for further action
         if text.tag_ranges("sel"):
@@ -195,7 +189,6 @@ class ButtonFunction:
 
     # Add underline to the highlighted text
     def underline_text(self, text):
-        # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
         global tag_sequence
         # Check if there's any selected text. If no text is selected, no need for further action
         if text.tag_ranges("sel"):
