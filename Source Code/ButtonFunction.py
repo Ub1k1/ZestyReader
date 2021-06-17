@@ -133,8 +133,8 @@ class ButtonFunction:
 
     # Create each help item by passing in the parent widget and row number, with the function name and description of the function
     def create_help_item(self, parent_widget, row_number, function_name, function_description):
-        Label(parent_widget, text=function_name, font="Arial 10 bold").grid(row=row_number, column=0, padx=2, pady=2, sticky="W")
-        Label(parent_widget, text=function_description, font="Arial 10").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
+        Label(parent_widget, text=function_name, font="Arial 18 bold").grid(row=row_number, column=0, padx=2, pady=2, sticky="W")
+        Label(parent_widget, text=function_description, font="Arial 18").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
 
 
     # Bold the highlighted text
