@@ -1,3 +1,7 @@
 Suggestion #1
--increase default font size
---resolution: default font size for button text and text window changed from 10 to 18
+-Increase default font size
+--Resolution: Default font size for button text and text window changed from 10 to 18
+
+Suggestion #2:
+-Increase the number of dyslexia-friendly fonts
+--Resolution: In progress
