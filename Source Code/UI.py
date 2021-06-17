@@ -4,27 +4,26 @@ from ButtonFunction import *
 from FileManager import *
 
 class UI:
-    #constructor
+    # Constructor
     def __init__(self):
         self.buttonFunctions = ButtonFunction
         self.fileManager = FileManager
 
     def run(self):
-
         # Create the application window.
         root = Tk()
         root.title("Zesty - A Visual and Audio Tool")
-        # The window has width of 800 pixels and height of 700 pixels
-        # Initial position from top left corner is 200 pixels right and 50 pixels down
+        # The window has a width of 800 pixels and a height of 700 pixels
+        # The initial position from the top left corner is 200 pixels right and 50 pixels down
         root.geometry("800x700+200+50")
         # Make the application window resizable
         root.resizable(True, True)
         root.minsize(800, 700)
 
-        # Create the textarea (undo=True to activate the setting otherwise edit_undo() and edit_redo() will not work)
+        # Create the text area (undo=True to activate the setting, otherwise edit_undo() and edit_redo() will not work)
         text_area = Frame(root, borderwidth=4)
         text_area.pack(side=TOP, fill="x")
-        # Text input (undo=True to activate the setting otherwise edit_undo() and edit_redo() will not work)
+        # Text input (undo=True to activate the setting, otherwise edit_undo() and edit_redo() will not work)
         text = scrolledtext.ScrolledText(wrap="word", font=("Arial", 10), background="WHITE", height=35, undo=True)
         text.pack(in_=text_area, side=LEFT, fill=BOTH, expand=True)
 
@@ -83,7 +82,7 @@ class UI:
         # Font Size
         font_size = StringVar()
         font_size_combo = ttk.Combobox(toolbar_two, width=4, font="Arial 10", textvariable=font_size,
-                                       values=("10", "12", "14", "16", "18", "20", "22", "24", "26", "28"))
+                                       values=("14", "16", "18", "20", "22", "24", "26", "28", "30", "32", "40"))
         font_size_combo.bind('<<ComboboxSelected>>', self.buttonFunctions.change_text_size(text=text, font_size=font_size))
         font_size_combo.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
         font_size_combo.current(1)
