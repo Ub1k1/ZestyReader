@@ -30,14 +30,14 @@ class ButtonFunction:
 
     # Mark the selected text for later
     def copy_text(self, text, root):
-        # Need clear the clipboard first
+        # Clear the clipboard first
         root.clipboard_clear()
         # Append the selected text to the clipboard
         text.clipboard_append(text.selection_get())
 
     # Cut the selected text
     def cut_text(self, text, root):
-        # Need to clear the clipboard first
+        # Clear the clipboard first
         root.clipboard_clear()
         # Append the selected text to the clipboard
         text.clipboard_append(text.selection_get())
@@ -213,14 +213,14 @@ class ButtonFunction:
 
     # Change the font type of the selected text
     def change_text_type(self, text, font_type, event):
-        # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
+        #Make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
         global tag_sequence
         # Check if there's any selected text. If no text is selected, no need for further action
         if text.tag_ranges("sel"):
-            # Get a list of existing tag for the selected text
+            # Get a list of existing tags for the selected text
             tags = text.tag_names(SEL_FIRST)
             tag_found = 0
-            # Check ig the selected text has a font type tag
+            # Check if the selected text has a font type tag
             for tag_name in tags:
                 if tag_name.startswith("font_type_text_"):
                     tag_found = 1
@@ -238,7 +238,7 @@ class ButtonFunction:
 
     # Change the font size of the selected text
     def change_text_size(self, text, font_size, event):
-        # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
+        # Make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
         global tag_sequence
         # Check if there's any selected text. If no text is selected, no need for further action
         if text.tag_ranges("sel"):
@@ -261,9 +261,9 @@ class ButtonFunction:
                 tag_sequence += 1
 
 
-    # Change the colour of the selected text
+    # Change the color of the selected text
     def change_text_color(self, text):
-        # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
+        # Make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
         global tag_sequence
         # Open the color chooser dialog
         color = colorchooser.askcolor(initialcolor="red")
@@ -278,10 +278,10 @@ class ButtonFunction:
                 if tag_name.startswith("font_color_text_"):
                     tag_found = 1
             if tag_found == 1:
-                # If the selected text already has a font color tag, then remove the font colour
+                # If the selected text already has a font color tag, then remove the font color
                 text.tag_remove(tag_name, SEL_FIRST, SEL_LAST)
             else:
-                # If the selected text does not have a font color tag, then add the font colour
+                # If the selected text does not have a font color tag, then add the font color
                 text.tag_add("font_color_text_" + str(tag_sequence), SEL_FIRST, SEL_LAST)
                 text.tag_configure("font_color_text_" + str(tag_sequence), foreground=color_name)
                 tag_sequence += 1
