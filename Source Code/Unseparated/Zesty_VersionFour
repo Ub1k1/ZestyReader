@@ -75,7 +75,7 @@ def cut_text():
 # Paste the selected text
 def paste_text():
     # Paste the selected text at the cursor
-    text.insert(INSERT, root.clipboard_get()
+    text.insert(INSERT, root.clipboard_get())
     root.clipboard_clear()
 
 
