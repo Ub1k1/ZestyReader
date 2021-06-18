@@ -315,7 +315,7 @@ def change_text_color():
 
 # Play the text user highlighted, otherwise, play all the text
 def play_text():
-    global paused = False
+    global paused == False
     
     if not paused and not pygame.mixer.get_busy():
         outfile = "temp.wav"
