@@ -119,12 +119,12 @@ class UI:
         voice_speed.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
         # Read Out
         play_image = PhotoImage(file="icons/Sound.png")
-        play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=play_text)
+        play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=self.buttonFunctions.play_text(text=text, button=play_button))
         play_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
         pause_image = PhotoImage(file="icons/Pause.png")
         # Stop Reading
         stop_image = PhotoImage(file="icons/Stop/png")
-        stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=stop_text)
+        stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=self.buttonFunctions.stop_text(text=text))
         stop_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 
         root.mainloop()
