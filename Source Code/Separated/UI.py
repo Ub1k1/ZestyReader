@@ -74,7 +74,7 @@ class UI:
         # Arrange tool bar two
         # Font Type
         font_type = StringVar()
-        font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 18")
+        font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 12")
         font_type_combo.bind('<<ComboboxSelected>>', self.buttonFunctions.change_text_type(text=text, font_type=font_type))
         font_type_combo.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
         selected_index = sorted(font.families()).index("Arial")
@@ -108,11 +108,11 @@ class UI:
         toolbar_three.pack(side=TOP, fill="x")
         # Arrange tool bar one
         # Voice Type
-        voice_type_combo = ttk.Combobox(toolbar_three, values=sorted(self.buttonFunctions.voices.keys()), font="Arial 18", width="45")
+        voice_type_combo = ttk.Combobox(toolbar_three, values=sorted(self.buttonFunctions.voices.keys()), font="Arial 12", width="45")
         voice_type_combo.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
         voice_type_combo.current(0)
         # Speed
-        voice_speed_label = Label(toolbar_three, text="Speed", font="Arial 18")
+        voice_speed_label = Label(toolbar_three, text="Speed", font="Arial 12")
         voice_speed_label.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
         voice_speed = ttk.Scale(toolbar_three, orient=HORIZONTAL, length=110, from_=100, to=200)
         voice_speed.set(150)
