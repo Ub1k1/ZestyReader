@@ -14,8 +14,7 @@ Running the source code:
 
 Using the source code to run the Executable file:
 -Complete the steps listed in "running the source code".
--Type in: "cd c:\folder-name" and press enter.
--Type in: "dir" and press enter.
+-Click on the cmd icon and scroll down to "edit".
 -Type in: "pyinstaller --onefile Zesty_VersionFive.py --dist ." and press enter.
 -Open and run Zesty.exe
 
