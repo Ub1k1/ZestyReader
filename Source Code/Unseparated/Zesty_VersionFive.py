@@ -311,7 +311,7 @@ def change_text_color():
             text.tag_configure("font_color_text_" + str(tag_sequence), foreground=color_name)
             tag_sequence += 1
 
-paused = false
+paused = False
 
 # Play the text user highlighted, otherwise, play all the text
 def play_text():
