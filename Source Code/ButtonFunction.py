@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import font, colorchooser
 import pyttsx3
+import pygame
 
 class ButtonFunction:
     #Constructor
@@ -8,7 +9,7 @@ class ButtonFunction:
         self.voices = {}
 
         # Play the text user highlighted, otherwise, play all the text
-    def play_text(button):
+    def play_text(text, button):
         if not paused and not pygame.mixer.get_busy():
             # Initialize pyttsx3
             engine = pyttsx3.init()
@@ -16,6 +17,8 @@ class ButtonFunction:
             system_voices = engine.getProperty("voices")
             for system_voice in system_voices:
             self.voices[system_voice.name] = system_voice.id
+            #Initialize pygame
+            pygame.mixer.init()
             
             outfile = "temp.wav"
             read_text = text.get(1.0, END)
