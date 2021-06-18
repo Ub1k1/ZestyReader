@@ -1,1 +1,14 @@
+During testing, additional issues and improvements were discovered. However, due to time and personnel constraints, they could not be fixed before release, and will be amended in future updates. 
+
+Improvement One:
+- Can't apply multiple typography styles onto the same words or sentences. For instance, if the highlighted text is "hello, world!", it cannot be both underlined and bolded at once. 
+--Proposal: 
+Developers could update the program so that each word (Or even each character) has its own tag_sequence, with the font module. 
+Currently, font = "Arial 18", but it can be amended so that font = "Arial 18 bold italic underline". 
+When the user highlights some text, the program can loop each word or character, and get its current font style from a dictionary. After the user changes a specific attribute, the new typography style can be saved into the dictionary for future reference. 
+
+Improvement Two:
+- For running the executable file, users must download both the file and the icons folder, and ensure that they are within the same folder. This is not very user-friendly.
+--Proposal: Developers could compile the application into an .MSI file for ease of access. 
+
 
