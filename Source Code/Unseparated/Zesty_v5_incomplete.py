@@ -333,9 +333,9 @@ def play_text():
         
  def update_button():
      if(play_button.text = "Play"):
-         button.configure(text="Pause", image="icons/Pause.png")
+         play_button.configure(text="Pause", image="icons/Pause.png")
      else:
-         button.configure(text="Play", image="icons/Pause.png") 
+         play_button.configure(text="Play", image="icons/Pause.png") 
 
 def stop_text():
     pygame.mixer.music.stop()
