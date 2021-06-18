@@ -329,6 +329,7 @@ def play_text():
         engine.save_to_file(read_text, outfile)
         engine.runAndWait()
         pygame.mixer.music.load(outfile)
+        pygame.mixer.music.play()
     elif paused:
         pygame.mixer.music.unpause()
         paused = False
