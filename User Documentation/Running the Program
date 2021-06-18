@@ -19,4 +19,6 @@ Using the source code to run the Executable file:
 -Type in: "pyinstaller --onefile Zesty_VersionFive.py --dist ." and press enter.
 -Open and run Zesty.exe
 
+Please note that everything is space sensitive.
+
 See video tutorial if more help is needed.
