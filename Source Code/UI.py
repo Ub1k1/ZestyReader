@@ -121,6 +121,7 @@ class UI:
         play_image = PhotoImage(file="icons/Sound.png")
         play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=self.buttonFunctions.play_text(text=text, image=play_image))
         play_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
+        play_image.set(PhotoImage(file="icons/Sound.png"))
         # Stop Reading
         stop_image = PhotoImage(file="icons/Stop/png")
         stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=self.buttonFunctions.stop_text())
