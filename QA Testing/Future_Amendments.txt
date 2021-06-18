@@ -10,8 +10,3 @@ When the user highlights some text, the program can loop each word or character,
 Improvement Two:
 - For running the executable file, users must download both the file and the icons folder, and ensure that they are within the same folder. This is not very user-friendly.
 -- Proposal: Developers could compile the application into an .MSI file for ease of access. 
-
-Improvement Three:
-- For the search function, if it is enabled, but the user does not type in a word, the program crashes.
--- Proposal
-
