@@ -1,3 +1,5 @@
+Install Python from https://www.python.org/
+
 How to install pyttsx3:
 -Open the Command Prompt (cmd.exe) on your computer. You can do so by opening the "Start" menu and searching up "cmd"
 -Type in "pip install pyttsx3"
