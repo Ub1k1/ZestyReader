@@ -7,5 +7,10 @@ Running the Executable file listed on Github:
 
 Running the source code:
 -Download "Zesty_VersionFive.py" and the icons folder off of Github.
--
+-Open the Command Prompt (cmd.exe) on your computer. You can do so by opening the "Start" menu and searching up "cmd". 
+-Type in: "cd c:\folder-name" and press enter.
+-Type in: "python Zesty_VersionFive.py" and press enter.
+
+Using the source code to run the Executable file:
+
 
