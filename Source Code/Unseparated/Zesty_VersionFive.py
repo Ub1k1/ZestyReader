@@ -329,10 +329,10 @@ def play_text():
         pygame.mixer.music.load(outfile)
     elif paused:
         pygame.mixer.music.unpause()
-        paused = false
+        paused = False
     else:
         pygame.mixer.music.pause()
-        paused = true
+        paused = True
         
 def update_button():
      if(play_button.text == "Play"):
@@ -342,7 +342,7 @@ def update_button():
 
 def stop_text():
     pygame.mixer.music.stop()
-    paused = false
+    paused = False
 
 # Create tool bar one
 toolbar_one = Frame(root, pady=2)
