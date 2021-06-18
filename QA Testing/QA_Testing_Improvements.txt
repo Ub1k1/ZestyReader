@@ -6,6 +6,6 @@ Suggestion #2:
 -Increase the number of dyslexia-friendly fonts
 --Resolution: In progress
 
-Suggestion #2:
+Suggestion #3:
 -To make the application more user-friendly, determine a way to package both Zesty.exe and the icons into one file
 --Resolution: In progress
