@@ -1,1 +1,3 @@
-
+Bug #1
+- pressing the play button while text is being played crashes the program
+  proposed resolution: while text is being played, turns play button into a pause button. also add a stop button
