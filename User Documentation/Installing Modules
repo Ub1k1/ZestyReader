@@ -1,0 +1,11 @@
+How to install pyttsx3:
+-Open the Command Prompt (cmd.exe) on your computer. You can do so by opening the "Start" menu and searching up "cmd"
+-Type in "pip install pyttsx3"
+
+How to install pygame:
+-Open the Command Prompt.
+-Type in "pip install pygame"
+
+Tkinter does not need to be manually installed as it is already included in the Python application.
+
+See video tutorial if more help is needed.
