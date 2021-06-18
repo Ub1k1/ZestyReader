@@ -1,1 +1,11 @@
+After installing the appropriate modules, users have three ways of running the program (Listed in increasing order of difficulty):
+
+Running the Executable file listed on Github:
+-Download the .exe and icons folder off of Github.
+-As they must be in the same folder in order to run, create a new folder and place both in it.
+-Run Zesty.exe
+
+Running the source code:
+-Download "Zesty_VersionFive.py" and the icons folder off of Github.
+-
 
