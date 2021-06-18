@@ -1,7 +1,8 @@
 Bug #1
-- pressing the play button while text is being played crashes the program
-  proposed resolution: while text is being played, turns play button into a pause button. also add a stop button
+- Pressing the play button while text is being played crashes the program
+  Proposed Resolution: while text is being played, turns play button into a pause button. Also add a stop button.
 
 Bug #2
 - Can't apply multiple typography styles onto the same words or sentences. For instance, if the highlighted text is "hello, world!", it cannot be both underlined and bolded at once. 
+  Proposed Resolution: 
 
