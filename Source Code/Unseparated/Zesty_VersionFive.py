@@ -30,6 +30,7 @@ root.minsize(800, 700)
 
 # Tag sequence to mark the text properties
 tag_sequence = 0
+paused = False
 
 # Open the existing text file
 def open_file():
@@ -107,6 +108,9 @@ def find_text():
 
 # Search the text from the beginning to the end. If the word found, highlight it in yellow
 def find_text_search(word):
+    if len(word) == 0:
+        return
+
     text.tag_remove("found_text", 1.0, END)
     text.tag_config("found_text", foreground="purple")
     # Search the text with nocase=1 (ignore case, case insensitive)
@@ -159,8 +163,8 @@ def help_popup():
 
 # Create each help item by passing in the parent widget and row number, with the function name and description of the function
 def create_help_item(parent_widget, row_number, function_name, function_description):
-    Label(parent_widget, text=function_name, font="Arial 10 bold").grid(row=row_number, column=0, padx=2, pady=2, sticky="W")
-    Label(parent_widget, text=function_description, font="Arial 10").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
+    Label(parent_widget, text=function_name, font="Arial 12 bold").grid(row=row_number, column=0, padx=2, pady=2, sticky="W")
+    Label(parent_widget, text=function_description, font="Arial 12").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
 
 
 # Make the highlighted text bold
@@ -312,12 +316,12 @@ def change_text_color():
             tag_sequence += 1
 
 
-
 # Play the text user highlighted, otherwise, play all the text
-def play_text():
-    global paused = False
-    
-    if not paused and not pygame.mixer.get_busy():
+def play_text(play_button):
+    global paused
+
+    print('paused =', paused, ', button text =', play_button['text'], ', busy =', pygame.mixer.music.get_busy())
+    if not paused and play_button['text'] == "Play" and not pygame.mixer.music.get_busy():
         outfile = "temp.wav"
         read_text = text.get(1.0, END)
         
@@ -330,22 +334,24 @@ def play_text():
         engine.runAndWait()
         pygame.mixer.music.load(outfile)
         pygame.mixer.music.play()
-    elif paused:
-        pygame.mixer.music.unpause()
-        paused = False
-    else:
+
+        play_button.configure(text="Pause")
+    elif not paused and play_button['text'] == "Pause" and pygame.mixer.music.get_busy():
         pygame.mixer.music.pause()
         paused = True
-        
-def update_button():
-     if(play_button.text == "Play"):
-         play_button.configure(text="Pause", image="icons/Pause.png")
-     else:
-         play_button.configure(text="Play", image="icons/Pause.png") 
+        play_button.configure(text="Play")
+    else:
+        pygame.mixer.music.unpause()
+        paused = False
+        play_button.configure(text="Pause")
 
-def stop_text():
+
+def stop_text(play_button):
     pygame.mixer.music.stop()
+    global paused
     paused = False
+    play_button.configure(text="Play")
+
 
 # Create tool bar one
 toolbar_one = Frame(root, pady=2)
@@ -405,7 +411,7 @@ font_size_combo = ttk.Combobox(toolbar_two, width=4, font="Arial 10", textvariab
                                values=("12", "14", "16", "18", "20", "22", "24", "26", "28", "30"))
 font_size_combo.bind('<<ComboboxSelected>>', change_text_size)
 font_size_combo.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
-font_size_combo.current(1)
+font_size_combo.current(0)
 # Bold
 bold_image = PhotoImage(file="icons/Bold.png")
 bold_button = Button(text="Bold", image=bold_image, compound=LEFT, width=60, height=24, command=bold_text)
@@ -439,18 +445,18 @@ voice_speed.set(150)
 voice_speed.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 # Read Out
 play_image = PhotoImage(file="icons/Sound.png")
-play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=lambda:[play_text, update_button])
+play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=lambda: play_text(play_button))
 play_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 # Stop Reading
 stop_image = PhotoImage(file="icons/Stop.png")
-stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=stop_text)
+stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=lambda: stop_text(play_button))
 stop_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 
 # Create the textarea (undo=True to activate the setting otherwise edit_undo() and edit_redo() will not work)
 text_area = Frame(root, borderwidth=4)
 text_area.pack(side=TOP, fill="x")
 # Text input (undo=True to activate the setting otherwise edit_undo() and edit_redo() will not work)
-text = scrolledtext.ScrolledText(wrap="word", font=("Arial", 10), background="WHITE", height=35, undo=True)
+text = scrolledtext.ScrolledText(wrap="word", font=("Arial", 12), background="WHITE", height=35, undo=True)
 text.pack(in_=text_area, side=LEFT, fill=BOTH, expand=True)
 
 root.mainloop()
