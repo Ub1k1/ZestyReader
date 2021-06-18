@@ -9,7 +9,7 @@ class ButtonFunction:
         self.voices = {}
 
         # Play the text user highlighted, otherwise, play all the text
-    def play_text(text, button):
+    def play_text(text):
         if not paused and not pygame.mixer.get_busy():
             # Initialize pyttsx3
             engine = pyttsx3.init()
@@ -34,11 +34,9 @@ class ButtonFunction:
             pygame.mixer.music.load(outfile)
 
         elif paused:
-            button.image = play_image
             pygame.mixer.music.unpause()
 
         else:
-            button.image = pause_image
             pygame.mixer.music.pause()
 
     def stop_text():
