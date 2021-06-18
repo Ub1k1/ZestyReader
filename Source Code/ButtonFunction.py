@@ -39,13 +39,11 @@ class ButtonFunction:
         else:
             pygame.mixer.music.pause()
             
-    def update_image(buttonText, buttonImage):
-        if(buttonText = "Play"):
-            buttonText.set("Pause")
-            buttonImage.set("icons/Sound.png")
+    def update_button(button):
+        if(button.text = "Play"):
+            button.configure(text="Pause", image="icons/Pause.png")
         else:
-            buttonText.set("Play")
-            buttonImage.set("icons/Pause.png")        
+            button.configure(text="Play", image="icons/Pause.png")      
 
     def stop_text():
         pygame.mixer.music.stop()
