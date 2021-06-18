@@ -325,16 +325,17 @@ def play_text():
         engine.setProperty('voice', voices[voice_type_combo.get()]) 
         engine.save_to_file(read_text, outfile)
         engine.runAndWait()
-
         pygame.mixer.music.load(outfile)
-
     elif paused:
-        play_button.image = play_image
         pygame.mixer.music.unpause()
-
     else:
-        play_button.image = pause_image
         pygame.mixer.music.pause()
+        
+ def update_button():
+     if(play_button.text = "Play"):
+         button.configure(text="Pause", image="icons/Pause.png")
+     else:
+         button.configure(text="Play", image="icons/Pause.png") 
 
 def stop_text():
     pygame.mixer.music.stop()
@@ -431,7 +432,7 @@ voice_speed.set(150)
 voice_speed.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 # Read Out
 play_image = PhotoImage(file="icons/Sound.png")
-play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=play_text)
+play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=lambda:[play_text, update_button])
 play_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 pause_image = PhotoImage(file="icons/Pause.png")
 # Stop Reading
