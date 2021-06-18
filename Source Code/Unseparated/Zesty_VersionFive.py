@@ -311,6 +311,7 @@ def change_text_color():
             text.tag_configure("font_color_text_" + str(tag_sequence), foreground=color_name)
             tag_sequence += 1
 
+paused = false
 
 # Play the text user highlighted, otherwise, play all the text
 def play_text():
@@ -328,17 +329,20 @@ def play_text():
         pygame.mixer.music.load(outfile)
     elif paused:
         pygame.mixer.music.unpause()
+        paused = false
     else:
         pygame.mixer.music.pause()
+        paused = true
         
  def update_button():
-     if(play_button.text = "Play"):
+     if(play_button.text == "Play"):
          play_button.configure(text="Pause", image="icons/Pause.png")
      else:
          play_button.configure(text="Play", image="icons/Pause.png") 
 
 def stop_text():
     pygame.mixer.music.stop()
+    paused = false
 
 # Create tool bar one
 toolbar_one = Frame(root, pady=2)
