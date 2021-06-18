@@ -119,7 +119,8 @@ class UI:
         voice_speed.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
         # Read Out
         play_image = PhotoImage(file="icons/Sound.png")
-        play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=self.buttonFunctions.play_text(text=text, image=play_image))
+        play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24)
+        play_button['command'] = lambda:[self.buttonFunctions.play_text(text=text), self.buttonFunctions.update_button(button=play_button)]
         play_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
         play_image.set(PhotoImage(file="icons/Sound.png"))
         # Stop Reading
