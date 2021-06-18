@@ -268,7 +268,7 @@ class ButtonFunction:
             # Get a list of existing tag for the selected text
             tags = text.tag_names(SEL_FIRST)
             tag_found = 0
-            # Check id the selected text has a font size tag
+            # Check if the selected text has a font size tag
             for tag_name in tags:
                 if tag_name.startswith("font_size_text_"):
                     tag_found = 1
@@ -296,7 +296,7 @@ class ButtonFunction:
             # Get a list of existing tag for the selected text
             tags = text.tag_names(SEL_FIRST)
             tag_found = 0
-            # Check ig the selected text has a font size tag
+            # Check if the selected text has a font size tag
             for tag_name in tags:
                 if tag_name.startswith("font_color_text_"):
                     tag_found = 1
