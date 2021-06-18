@@ -1,9 +1,10 @@
 # ZestyReader
 
-To run the package, import pyinstaller and run pip install pyinstaller. Ensure that hook-pyttsx3.py is under D:\Development\python39\Lib\site-packages\PyInstaller\hooks. If not, follow the instructions on https://github.com/nateshmbhat/pyttsx3/issues/6. 
+Overview of folders and files within the repository (In reccomended viewing order):
 
-To run the source code, first install Python 3.9.4 and import pyttsx3. In the source code folder, run Zesty.py
+User Documentation: Overview of the application. Divided into three components- Preliminary installation of file components, running the executable file or converting the Python scripts into an executable file, and a rundown of the applications's features.
 
-After, go to the folder where the source code is, drag and drop the icons folder to it, and run Zesty.exe
+Source Code: The different versions of code. The first subfolder contains code merged into one file, while the second is separated by concern. For ease of access, users interested in utilizing the program should download Zesty_VersionFive, as it is easier to run. However, stakeholders should focus their attention on the second folder. 
 
-**IMPORTANT:** Make sure **Zesty.exe** is in the same folder as the **icons** folder before running it
+QA Testing:
+
