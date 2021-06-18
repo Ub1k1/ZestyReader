@@ -3,6 +3,8 @@ Aside from utilizing free Python IDEs for personal use, additional resources wer
 https://pypi.org/project/pyttsx3/
 - tkinter was utilized to create the graphical user interface and is free to use.
 https://docs.python.org/3/library/tkinter.html
+- pygame was used to create the audio player and is free to use
+https://www.pygame.org/news
 
 Additionally, developers consulted the following resources to guide them in completing the application:
 https://docs.python.org/3/
