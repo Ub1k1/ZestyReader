@@ -7,23 +7,39 @@ class ButtonFunction:
     def __init__(self):
         self.voices = {}
 
-    # Play the text the user highlighted. If none was highlighted, play all the text
-    def play_text(self, text, voice_speed, voice_type_combo):
-        # Initialize pyttsx3
-        engine = pyttsx3.init()
-        # Produce a available voice list
-        system_voices = engine.getProperty("voices")
-        for system_voice in system_voices:
+        # Play the text user highlighted, otherwise, play all the text
+    def play_text(button):
+        if not paused and not pygame.mixer.get_busy():
+            # Initialize pyttsx3
+            engine = pyttsx3.init()
+            # Produce a available voice list
+            system_voices = engine.getProperty("voices")
+            for system_voice in system_voices:
             self.voices[system_voice.name] = system_voice.id
+            
+            outfile = "temp.wav"
+            read_text = text.get(1.0, END)
 
-        read_text = text.get(1.0, END)
-        if text.tag_ranges('sel'):
-            read_text = text.get(SEL_FIRST, SEL_LAST)
-        engine.setProperty("rate", voice_speed.get())
-        engine.setProperty('voice', self.voices[voice_type_combo.get()])
-        engine.say(read_text)
-        engine.runAndWait()
-        engine.stop()
+            if text.tag_ranges('sel'):
+                read_text = text.get(SEL_FIRST, SEL_LAST)
+
+            engine.setProperty("rate", voice_speed.get())
+            engine.setProperty('voice', voices[voice_type_combo.get()]) 
+            engine.save_to_file(read_text, outfile)
+            engine.runAndWait()
+
+            pygame.mixer.music.load(outfile)
+
+        elif paused:
+            button.image = play_image
+            pygame.mixer.music.unpause()
+
+        else:
+            button.image = pause_image
+            pygame.mixer.music.pause()
+
+    def stop_text():
+        pygame.mixer.music.stop()
 
     # Tag sequence to mark the text properties
     tag_sequence = 0
