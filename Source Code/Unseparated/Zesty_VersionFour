@@ -378,7 +378,7 @@ toolbar_two.pack(side=TOP, fill="x")
 # Arrange tool bar two
 # Font Type
 font_type = StringVar()
-font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 14)
+font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 14")
 font_type_combo.bind('<<ComboboxSelected>>', change_text_type)
 font_type_combo.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
 selected_index = sorted(font.families()).index("Arial")
