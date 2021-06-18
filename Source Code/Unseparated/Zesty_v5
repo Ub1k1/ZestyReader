@@ -25,10 +25,10 @@ system_voices = engine.getProperty("voices")
 for system_voice in system_voices:
     voices[system_voice.name] = system_voice.id
 
-# Create the application window.
+# Create the application window
 root = Tk()
 root.title("Zesty - A Visual and Audio Tool")
-# The window has width of 800 pixels and height of 700 pixels
+# The window has a width of 800 pixels and a height of 700 pixels
 # Initial position from top left corner is 200 pixels right and 50 pixels down
 root.geometry("800x700+200+50")
 # Make the application window resizable
@@ -42,13 +42,13 @@ tag_sequence = 0
 def open_file():
     # Open the dialog and ask the user to select a file
     existing_file = filedialog.askopenfile(filetypes=[('Text File', '.txt'), ('Python File', '.py')])
-    # Need clear the existing text in the window first
+    # Clear the existing text in the window first
     text.delete(1.0, END)
-    # Then we can insert the new text
+    # Insert the new text
     text.insert(INSERT, existing_file.read())
 
 
-# Save the text to a file for future usage
+# Save the text to a file for future use
 def save_file():
     # Open the dialog and ask the user to enter the file name
     new_file_path = filedialog.asksaveasfilename(filetypes=[('Text File', '.txt'), ('Python File', '.py')], defaultextension=".txt")
@@ -60,7 +60,7 @@ def save_file():
 
 # Mark the selected text for later
 def copy_text():
-    # Need clear the clipboard first
+    # Clear the clipboard first
     root.clipboard_clear()
     # Append the selected text to the clipboard
     text.clipboard_append(text.selection_get())
@@ -68,7 +68,7 @@ def copy_text():
 
 # Cut the selected text
 def cut_text():
-    # Need clear the clipboard first
+    # Clear the clipboard first
     root.clipboard_clear()
     # Append the selected text to the clipboard
     text.clipboard_append(text.selection_get())
@@ -80,8 +80,7 @@ def cut_text():
 def paste_text():
     # Paste the selected text at the cursor
     text.insert(INSERT, root.clipboard_get())
-    # Need to clear keyboard a
-    # root.clipboard_clear()
+    root.clipboard_clear()
 
 
 # To undo the change
@@ -96,7 +95,7 @@ def redo_text():
 
 # Search the text and highlight words 
 def find_text():
-    # Create a popup window for search function, and the popup is transient (temporary) to the main window
+    # Create a popup window for search function
     search_popup = Toplevel(root)
     search_popup.title('Word Search')
     search_popup.transient(root)
@@ -108,7 +107,7 @@ def find_text():
     search_input = Entry(search_popup, width=20)
     search_input.grid(row=0, column=1, padx=2)
     search_input.focus_set()
-    # Action button to search or cancel.
+    # Action button to search or cancel
     # If you need pass a parameter to the function, must use 'lambda:' keyword
     Button(search_popup, text="Search", command=lambda: find_text_search(search_input.get())).grid(row=1, column=0, padx=2, pady=2, sticky="E")
     Button(search_popup, text="Close", command=lambda: find_text_close(search_popup)).grid(row=1, column=1, padx=2, pady=2, sticky="W")
@@ -138,7 +137,7 @@ def find_text_close(search_popup):
 
 # Popup window for how to use the application
 def help_popup():
-    # Create a popup window for help function, and the popup is transient (temporary) to the main window
+    # Create a popup window for the help function
     help_panel = Toplevel(root)
     help_panel.title('Hep')
     help_panel.transient(root)
@@ -326,18 +325,30 @@ def change_text_color():
 
 # Play the text user highlighted, otherwise, play all the text
 def play_text():
-    temp = "temp.wav"
-    #read_text = text.get(1.0, END)
-    engine.save_to_file(text.get('1.0', END), outfile)
-    engine.runAndWait()
-    if text.tag_ranges('sel'):
-        read_text = text.get(SEL_FIRST, SEL_LAST)
-    engine.setProperty("rate", voice_speed.get())
-    engine.setProperty('voice', voices[voice_type_combo.get()])
-    engine.say(read_text)
-    engine.runAndWait()
-    engine.stop()
+    if not paused and not pygame.mixer.get_busy():
+        outfile = "temp.wav"
+        read_text = text.get(1.0, END)
+        
+        if text.tag_ranges('sel'):
+            read_text = text.get(SEL_FIRST, SEL_LAST)
+            
+        engine.setProperty("rate", voice_speed.get())
+        engine.setProperty('voice', voices[voice_type_combo.get()]) 
+        engine.save_to_file(read_text, outfile)
+        engine.runAndWait()
 
+        pygame.mixer.music.load(outfile)
+
+    elif paused:
+        play_button.image = play_image
+        pygame.mixer.music.unpause()
+
+    else:
+        play_button.image = pause_image
+        pygame.mixer.music.pause()
+
+def stop_text():
+    pygame.mixer.music.stop()
 
 # Create tool bar one
 toolbar_one = Frame(root, pady=2)
@@ -386,7 +397,7 @@ toolbar_two.pack(side=TOP, fill="x")
 # Arrange tool bar two
 # Font Type
 font_type = StringVar()
-font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 14)
+font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 14")
 font_type_combo.bind('<<ComboboxSelected>>', change_text_type)
 font_type_combo.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
 selected_index = sorted(font.families()).index("Arial")
@@ -433,6 +444,11 @@ voice_speed.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 play_image = PhotoImage(file="icons/Sound.png")
 play_button = Button(text="Play", image=play_image, compound=LEFT, width=60, height=24, command=play_text)
 play_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
+pause_image = PhotoImage(file="icons/Pause.png")
+# Stop Reading
+stop_image = PhotoImage(file="icons/Stop/png")
+stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=stop_text)
+stop_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 
 # Create the textarea (undo=True to activate the setting otherwise edit_undo() and edit_redo() will not work)
 text_area = Frame(root, borderwidth=4)
