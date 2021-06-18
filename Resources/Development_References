@@ -1,3 +1,11 @@
 Aside from utilizing free Python IDEs for personal use, additional resources were used from open source libraries:
+- pyttsx3 is a text-to-speech converter on Python and free for use.
 https://pypi.org/project/pyttsx3/
+- tkinter was utilized to create the graphical user interface and is free to use.
 https://docs.python.org/3/library/tkinter.html
+
+Additionally, developers consulted the following resources to guide them in completing the application:
+https://docs.python.org/3/
+https://docs.python.org/3/library/tk.html
+https://pyttsx3.readthedocs.io/en/latest/
+https://www.geeksforgeeks.org/convert-python-script-to-exe-file/
