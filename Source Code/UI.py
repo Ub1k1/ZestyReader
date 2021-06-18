@@ -124,7 +124,7 @@ class UI:
         pause_image = PhotoImage(file="icons/Pause.png")
         # Stop Reading
         stop_image = PhotoImage(file="icons/Stop/png")
-        stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=self.buttonFunctions.stop_text(text=text))
+        stop_button = Button(text="Stop", image=stop_image, compound=LEFT, width=60, height=24, command=self.buttonFunctions.stop_text())
         stop_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 
         root.mainloop()
