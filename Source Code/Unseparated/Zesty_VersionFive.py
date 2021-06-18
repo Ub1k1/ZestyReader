@@ -159,8 +159,8 @@ def help_popup():
 
 # Create each help item by passing in the parent widget and row number, with the function name and description of the function
 def create_help_item(parent_widget, row_number, function_name, function_description):
-    Label(parent_widget, text=function_name, font="Arial 14 bold").grid(row=row_number, column=0, padx=2, pady=2, sticky="W")
-    Label(parent_widget, text=function_description, font="Arial 14").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
+    Label(parent_widget, text=function_name, font="Arial 18 bold").grid(row=row_number, column=0, padx=2, pady=2, sticky="W")
+    Label(parent_widget, text=function_description, font="Arial 18").grid(row=row_number, column=1, padx=20, pady=2, sticky="W")
 
 
 # Make the highlighted text bold
@@ -245,7 +245,7 @@ def change_text_type(event):
         # Get a list of existing tag for the selected text
         tags = text.tag_names(SEL_FIRST)
         tag_found = 0
-        # Check ig the selected text has a font type tag
+        # Check if the selected text has a font type tag
         for tag_name in tags:
             if tag_name.startswith("font_type_text_"):
                 tag_found = 1
@@ -270,7 +270,7 @@ def change_text_size(event):
         # Get a list of existing tag for the selected text
         tags = text.tag_names(SEL_FIRST)
         tag_found = 0
-        # Check id the selected text has a font size tag
+        # Check if the selected text has a font size tag
         for tag_name in tags:
             if tag_name.startswith("font_size_text_"):
                 tag_found = 1
@@ -387,15 +387,15 @@ toolbar_two.pack(side=TOP, fill="x")
 # Arrange tool bar two
 # Font Type
 font_type = StringVar()
-font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 14")
+font_type_combo = ttk.Combobox(toolbar_two, textvariable=font_type, values=sorted(font.families()), font="Arial 18")
 font_type_combo.bind('<<ComboboxSelected>>', change_text_type)
 font_type_combo.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
 selected_index = sorted(font.families()).index("Arial")
 font_type_combo.current(selected_index)
 # Font Size
 font_size = StringVar()
-font_size_combo = ttk.Combobox(toolbar_two, width=4, font="Arial 14", textvariable=font_size,
-                               values=("14", "16", "18", "20", "22", "24", "26", "28", "30"))
+font_size_combo = ttk.Combobox(toolbar_two, width=4, font="Arial 18", textvariable=font_size,
+                               values=("12", "14", "16", "18", "20", "22", "24", "26", "28", "30"))
 font_size_combo.bind('<<ComboboxSelected>>', change_text_size)
 font_size_combo.pack(in_=toolbar_two, side=LEFT, padx=2, pady=2)
 font_size_combo.current(1)
@@ -421,11 +421,11 @@ toolbar_three = Frame(root, pady=2)
 toolbar_three.pack(side=TOP, fill="x")
 # Arrange tool bar one
 # Voice Type
-voice_type_combo = ttk.Combobox(toolbar_three, values=sorted(voices.keys()), font="Arial 14", width="45")
+voice_type_combo = ttk.Combobox(toolbar_three, values=sorted(voices.keys()), font="Arial 18", width="45")
 voice_type_combo.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 voice_type_combo.current(0)
 # Speed
-voice_speed_label = Label(toolbar_three, text="Speed", font="Arial 14")
+voice_speed_label = Label(toolbar_three, text="Speed", font="Arial 18")
 voice_speed_label.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 voice_speed = ttk.Scale(toolbar_three, orient=HORIZONTAL, length=110, from_=100, to=200)
 voice_speed.set(150)
@@ -443,7 +443,7 @@ stop_button.pack(in_=toolbar_three, side=LEFT, padx=2, pady=2)
 text_area = Frame(root, borderwidth=4)
 text_area.pack(side=TOP, fill="x")
 # Text input (undo=True to activate the setting otherwise edit_undo() and edit_redo() will not work)
-text = scrolledtext.ScrolledText(wrap="word", font=("Arial", 14), background="WHITE", height=35, undo=True)
+text = scrolledtext.ScrolledText(wrap="word", font=("Arial", 18), background="WHITE", height=35, undo=True)
 text.pack(in_=text_area, side=LEFT, fill=BOTH, expand=True)
 
 root.mainloop()
