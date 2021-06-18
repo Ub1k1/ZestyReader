@@ -40,7 +40,6 @@ def open_file():
     # Insert the new text
     text.insert(INSERT, existing_file.read())
 
-
 # Save the text to a file for future use
 def save_file():
     # Open the dialog and ask the user to enter the file name
@@ -101,7 +100,7 @@ def find_text():
     search_input.grid(row=0, column=1, padx=2)
     search_input.focus_set()
     # Action button to search or cancel
-    # If you need pass a parameter to the function, must use 'lambda:' keyword
+    # If you need to pass a parameter to the function, must use 'lambda:' keyword
     Button(search_popup, text="Search", command=lambda: find_text_search(search_input.get())).grid(row=1, column=0, padx=2, pady=2, sticky="E")
     Button(search_popup, text="Close", command=lambda: find_text_close(search_popup)).grid(row=1, column=1, padx=2, pady=2, sticky="W")
 
@@ -135,27 +134,27 @@ def help_popup():
     help_panel.title('Hep')
     help_panel.transient(root)
     help_panel.resizable(False, False)
-    # Initial position from top left corner is 250 pixel right and 200 pixel down
+    # Initial position from top left corner is 250 pixels right and 200 pixels down
     help_panel.geometry("550x450+250+200")
-    # Create each help items for the first toolbar
-    create_help_item(help_panel, 0, "Open:", "Explanation")
-    create_help_item(help_panel, 1, "Save:", "Explanation")
-    create_help_item(help_panel, 2, "Copy:", "Explanation")
-    create_help_item(help_panel, 3, "Cut:", "Explanation")
-    create_help_item(help_panel, 4, "Paste:", "Explanation")
-    create_help_item(help_panel, 5, "Undo:", "Explanation")
-    create_help_item(help_panel, 6, "Redo:", "Explanation")
-    create_help_item(help_panel, 7, "Find:", "Explanation")
-    # Create each help items for the second toolbar
+    # Help items for the first toolbar
+    create_help_item(help_panel, 0, "Open:", "Open an existing text file and configure it to your liking!")
+    create_help_item(help_panel, 1, "Save:", "Save the text to a new file")
+    create_help_item(help_panel, 2, "Copy:", "Save the highlighted text to the clipboard")
+    create_help_item(help_panel, 3, "Cut:", "Cut the highlighted text")
+    create_help_item(help_panel, 4, "Paste:", "Paste the text you previously copied/cut to the current position")
+    create_help_item(help_panel, 5, "Undo:", "Undo a text change")
+    create_help_item(help_panel, 6, "Redo:", "Redo a text change")
+    create_help_item(help_panel, 7, "Find:", "Find the word you entered within the text")
+    # Help items for the second toolbar
     create_help_item(help_panel, 8, "------", "")
-    create_help_item(help_panel, 9, "Font:", "Explanation")
-    create_help_item(help_panel, 10, "Bold:", "Explanation")
-    create_help_item(help_panel, 11, "Italic:", "Explanation")
-    create_help_item(help_panel, 12, "Underline:", "Explanation")
-    create_help_item(help_panel, 13, "Color:", "Explanation")
-    # Create each help items for the third toolbar
+    create_help_item(help_panel, 9, "Font:", "Change the font type and size for the highlighted text")
+    create_help_item(help_panel, 10, "Bold:", "Make the highlighted text bold")
+    create_help_item(help_panel, 11, "Italic:", "Italicize the highlighted text")
+    create_help_item(help_panel, 12, "Underline:", "Underline the highlighted text")
+    create_help_item(help_panel, 13, "Color:", "Change the color of the highlighted text")
+    # Help items for the third toolbar
     create_help_item(help_panel, 14, "------", "")
-    create_help_item(help_panel, 15, "Explanation")
+    create_help_item(help_panel, 15, "Select your preferred voice type, change the playback speed, and play it outloud using the play button")
 
 
 # Create each help item by passing in the parent widget and row number, with the function name and description of the function
@@ -166,7 +165,7 @@ def create_help_item(parent_widget, row_number, function_name, function_descript
 
 # Make the highlighted text bold
 def bold_text():
-    # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
+    # Global tag_sequence, so any change to tag_sequence will be visible from other methods
     global tag_sequence
     # Check if there's any selected text. If no text is selected, no need for further action
     if text.tag_ranges("sel"):
@@ -191,7 +190,6 @@ def bold_text():
 
 # Make the highlighted text italized
 def italic_text():
-    # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
     global tag_sequence
     # Check if there's any selected text. If no text is selected, no need for further action
     if text.tag_ranges("sel"):
@@ -217,7 +215,6 @@ def italic_text():
 
 # Add underline to the highlighted text
 def underline_text():
-    # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
     global tag_sequence
     # Check if there's any selected text. If no text is selected, no need for further action
     if text.tag_ranges("sel"):
@@ -242,7 +239,6 @@ def underline_text():
 
 # Change the font type of the selected text
 def change_text_type(event):
-    # We need make the tag_sequence as global, so any change to tag_sequence will be visible from other methods
     global tag_sequence
     # Check if there's any selected text. If no text is selected, no need for further action
     if text.tag_ranges("sel"):
