@@ -4,3 +4,4 @@ Bug #1
 
 Bug #2
 - If nothing is typed into the search bar, and the user clicks Search, the program crashes.
+--Resolution: Edited program so that if nothing is typed, nothing will be highlighted anf the program continues as normal.
