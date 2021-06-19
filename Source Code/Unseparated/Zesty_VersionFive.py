@@ -126,6 +126,7 @@ def find_text_search(word):
 
 def find_text_close(search_popup):
     """Removes the highlight and closes the search popup window.
+    
     :param search_popup: the search popup window to be closed
     :type search_popup: Toplevel
     """
