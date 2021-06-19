@@ -179,7 +179,7 @@ def create_help_item(parent_widget, row_number, function_name, function_descript
 
 
 def bold_text():
-    """If the selected text is not bold, then makes it bold. Otherwise, makes it unbold.
+    """If the selected text is not bold or partially bolded, then makes it bold. Otherwise, makes it unbold.
     """
     global tag_sequence
     if text.tag_ranges("sel"):
@@ -199,7 +199,7 @@ def bold_text():
 
 
 def italic_text():
-    """If the selected text is not italicized, then makes it italicized. Otherwise, makes it unitalicized.
+    """If the selected text is not italicized or partially italicized, then makes it italicized. Otherwise, makes it unitalicized.
     """
     global tag_sequence
     if text.tag_ranges("sel"):
@@ -220,7 +220,7 @@ def italic_text():
 
 
 def underline_text():
-    """If the selected text is not underlined, then makes it underlined. Otherwise, makes it not underlined.
+    """If the selected text is not underlined or partially underlined, then makes it underlined. Otherwise, makes it not underlined.
     """
     global tag_sequence
     if text.tag_ranges("sel"):
