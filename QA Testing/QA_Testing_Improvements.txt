@@ -5,3 +5,6 @@ Suggestion #1
 Suggestion #2:
 -Increase the number of dyslexia-friendly fonts
 --Resolution: New fonts were imported
+
+Suggestion #3:
+-
